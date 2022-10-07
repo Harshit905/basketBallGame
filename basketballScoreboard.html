@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100%;
+    }
+
+    #box {
+        position: relative;
+        width: 575px;
+        height: 385px;
+        background: #1B244A;
+        transform: rotate(5.08deg);
+        border-radius: 20px;
+    }
+
+    .showRun1 {
+        position: absolute;
+        width: 155px;
+        height: 120px;
+        left: 80px;
+        top: 100px;
+        background-color: rgb(0, 0, 0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .showRun2 {
+        position: absolute;
+        width: 155px;
+        height: 120px;
+        right: 80px;
+        top: 100px;
+        background-color: rgb(0, 0, 0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #home {
+        position: absolute;
+        width: 149px;
+        height: 36px;
+        left: 80px;
+        top: 30px;
+        font-family: 'Verdana';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 36px;
+        text-align: center;
+        color: #EEEEEE;
+    }
+
+    #guest {
+        position: absolute;
+        width: 149px;
+        height: 36px;
+        right: 80px;
+        top: 30px;
+        font-family: 'Verdana';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 36px;
+        text-align: center;
+        color: #EEEEEE;
+    }
+
+    .btn-box-1 {
+        position: absolute;
+        width: 155px;
+        height: 45px;
+        left: 79px;
+        top: 240px;
+        background: #1B244A;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .btn-box-2 {
+        position: absolute;
+        width: 155px;
+        height: 45px;
+        right: 79px;
+        top: 240px;
+        background: #1B244A;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    button{
+        padding: 8px;
+        border-color: #9AABD8;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    .new-game{
+        position: absolute;
+        width: 300px;
+        height: 45px;
+        right: 145px;
+        top: 300px;
+        background: #1B244A;
+        border: 1px solid #9AABD8;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        color: #EEEEEE;
+        font-family: 'Verdana';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 36px;
+    }
+    .new-game:hover{
+        background: #171f44;
+        filter:brightness(1.6);
+        color: #f7f5f5;
+    }
+    #result{
+        font-family: 'Verdana';
+        font-style: normal;
+        text-align: center; 
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div id="box">
+            <h1 id="home">HOME</h1>
+            <div class="showRun1">
+                <h1 id="showRun1-content"
+                    style="font-size: 100px;font-family: 'Cursed Timer ULiL';font-style: normal;font-weight: 400;color: #F94F6D;">
+                    0</h1>
+            </div>
+            <h1 id="guest">GUEST</h1>
+            <div class="showRun2">
+                <h1 id="showRun2-content"
+                    style="font-size: 100px;font-family: 'Cursed Timer ULiL'; font-style: normal;font-weight: 400;color: #F94F6D;">
+                    0</h1>
+            </div>
+            <div class="btn-box-1">
+                <button onclick="plus_1()">+1</button>
+                <button onclick="plus_2()">+2</button>
+                <button onclick="plus_3()">+3</button>
+            </div>
+            <div class="btn-box-2">
+                <button onclick="plus_11()">+1</button>
+                <button onclick="plus_22()">+2</button>
+                <button onclick="plus_33()">+3</button>
+            </div>
+            <div class="new-game" onclick="newGame()">New Game</div>
+            <h3 id="result">
+
+            </h3>
+            <!-- <div class="btn-box-2"></div> -->
+        </div>
+
+    </div>
+    <script>
+        let count1=0,count2=0;
+        let showRun1=document.getElementById("showRun1-content");
+        let showRun2=document.getElementById("showRun2-content");
+        function plus_1(){
+            count1+=1;
+            showRun1.innerText=count1;
+        }
+        function plus_2(){
+            count1+=2;
+            showRun1.innerText=count1;
+        }
+        function plus_3(){
+            count1+=3;
+            showRun1.innerText=count1;
+        }
+        function plus_11(){
+            count2+=1;
+            showRun2.innerText=count2;
+        }
+        function plus_22(){
+            count2+=2;
+            showRun2.innerText=count2;
+        }
+        function plus_33(){
+            count2+=3;
+            showRun2.innerText=count2;
+        }
+        function newGame(){
+            result();
+            count1=0;
+            count2=0;
+            showRun1.innerText=count1;
+            showRun2.innerText=count2;
+        }
+        function result(){
+            if(count1>count2){
+                document.getElementById("result").textContent="HOME WAS WINNER LAST TIME!!!";  
+            }
+            else
+            if(count2>count1){
+                document.getElementById("result").textContent="GUEST WAS WINNER LAST TIME!!!";
+            }
+            else{
+                document.getElementById("result").textContent="MATCH DRAW!!!";
+            }
+           
+            document.getElementById("result").style.color="red";
+
+        }
+    </script>
+</body>
+
+</html>
